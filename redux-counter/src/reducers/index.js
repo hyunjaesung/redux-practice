@@ -1,33 +1,41 @@
 import * as types from '../actions/ActionTypes';
+import numberReducer from './number';
+import colorReducer from './color';
+import { combineReducers } from 'redux';
 
 
-const initialState = {
-    color:'black',
-    number:0
-};
+const reducer = combineReducers({ // state 안에 오브젝트가 두개있는꼴
+    numberData : numberReducer,
+    colorData : colorReducer
+})
 
-function counterReducer(state=initialState, action) {
-    switch(action.type){
-        case types.INCREMENT :
-            return {
-                ...state,
-                number : state.number +1
-            };
+// const initialState = {
+//     color:'black',
+//     number:0
+// };
 
-        case types.SET_COLOR :
-            return {
-                ...state,
-                color : action.color
+// function counterReducer(state=initialState, action) {
+//     switch(action.type){
+//         case types.INCREMENT :
+//             return {
+//                 ...state,
+//                 number : state.number +1
+//             };
 
-
-            };
-
-        default :
-            return state;
-
-        }
-};
+//         case types.SET_COLOR :
+//             return {
+//                 ...state,
+//                 color : action.color
 
 
-export default counterReducer;
+//             };
+
+//         default :
+//             return state;
+
+//         }
+// };
+
+
+export default reducer; // store에 들어간다
 
