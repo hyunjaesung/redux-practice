@@ -1,29 +1,23 @@
 import Counter from "../components/Counter";
 import * as actions from "../actions";
 import {connect} from 'react-redux';
+import CounterList from "../components/CounterList";
+import { getRandomColor } from "../lib/getRandomColor";
 
-export function getRandomColor() {
-    const colors = ['white','blue','red','orange'];
-
-    const random = Math.floor(Math.random() * 4); // 4가지 색상
-
-    return colors[random];
-}
 
 const mapStateToProps = (state) => ({
-    color:state.color,
-    number:state.number
+    counters:state.counters
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onIncrement : () => dispatch(actions.increment()),
-    onSetColor : () => {
+    onIncrement : (index) => dispatch(actions.increment(index)),
+    onSetColor : (index) => {
         const color = getRandomColor();   
-        dispatch(actions.setColor(color));
+        dispatch(actions.setColor(index, color));
     }
 })
 
-const CounterContainer = connect(mapStateToProps,mapDispatchToProps)(Counter);
+const CounterContainer = connect(mapStateToProps,mapDispatchToProps)(CounterList);
 
 
 export default CounterContainer;

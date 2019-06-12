@@ -5,8 +5,8 @@ import './Button.css';
 const Buttons = ({onCreate, onRemove}) => {
     return (
         <div className = "Buttons">
-            <div className = "btn add" OnClick = {onCreate}></div>
-            <div className = "btn remove" OnClick = {onRemove}></div>
+            <div className = "btn add" onClick = {onCreate}></div>
+            <div className = "btn remove" onClick = {onRemove}></div>
         </div>
     );
 }
