@@ -11,8 +11,8 @@ export function getRandomColor() {
 }
 
 const mapStateToProps = (state) => ({
-    color:state.colorData.color,
-    number:state.numberData.number
+    color:state.color,
+    number:state.number
 })
 
 const mapDispatchToProps = (dispatch) => ({
